@@ -1,13 +1,10 @@
 package com.toolv.springcloud.controller;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,9 +26,6 @@ public class PaymentController
 
 	@Value("${server.port}")
 	private Integer serverPort;
-
-	@Resource
-	private DiscoveryClient discoveryClient;
 
 	@PostMapping("/payment/create")
 	public CommonResult<?> create(@RequestBody Payment payment)
@@ -59,23 +53,5 @@ public class PaymentController
 		{
 			return new CommonResult<>(444, String.format("Query error, id:[%d] not found. Server port: %d", id, serverPort));
 		}
-	}
-
-	@GetMapping("/payment/descovery")
-	public Object descovery() {
-		String description = discoveryClient.description();
-		log.info("description=[{}]", description);
-		List<String> services = discoveryClient.getServices();
-		for (String service : services)
-		{
-			log.info("service=[{}]", service);
-			List<ServiceInstance> instances = discoveryClient.getInstances(service);
-			for (ServiceInstance serviceInstance : instances)
-			{
-				log.info("instance=[{}]", serviceInstance);
-			}
-		}
-
-		return discoveryClient;
 	}
 }

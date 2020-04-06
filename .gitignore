@@ -1,6 +1,4 @@
 /.idea/
-/cloud-consumer-order80/cloud-consumer-order80.iml
-/cloud-provider-payment8001/cloud-provider-payment8001.iml
-/cloud-provider-payment8001/target/
-/cloud-consumer-order80/target/
-/cloud-provider-payment8001/src/main/resources/rebel.xml
+/**/*.iml
+/**/target/
+/**/rebel.xml

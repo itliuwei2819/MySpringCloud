@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8002
 
 spring:
   application:
@@ -36,3 +36,7 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://eureka7001:7001/eureka,http://eureka7002:7002/eureka,http://eureka7003:7003/eureka
+  instance:
+    # 在页面中的显示名称优化, 可以启动后与 cloud-provider-payment8001 做一下对比
+    instance-id: payment8002
+    prefer-ip-address: true

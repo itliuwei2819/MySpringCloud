@@ -13,3 +13,8 @@ eureka:
     service-url:
       # 设置与Eureka server 交互的地址, 查询服务和注册服务都需要依赖这个地址
       defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/
+  server:
+    # 设置当节点挂掉立即清除
+    enable-self-preservation: false
+    # 两秒内没收到应答就视为节点挂掉
+    eviction-interval-timer-in-ms: 2000

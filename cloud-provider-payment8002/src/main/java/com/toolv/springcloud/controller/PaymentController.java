@@ -54,4 +54,9 @@ public class PaymentController
 			return new CommonResult<>(444, String.format("Query error, id:[%d] not found. Server port: %d", id, serverPort));
 		}
 	}
+
+	@GetMapping("/payment/lb")
+	public String getPaymentLB() {
+		return serverPort.toString();
+	}
 }
